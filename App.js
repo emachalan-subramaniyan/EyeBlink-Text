@@ -14,7 +14,6 @@ const text = "Eye Ball identification of and creating boundary boxes particularl
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [faces, setFaces] = useState(false);
-  const[eyesOpen, setEyesOpen] = useState(false);
   const[count, setCount] = useState(null);
   const [hidden, setHidden] = useState(false);
   const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
@@ -101,6 +100,7 @@ export default function App() {
           <View style={{ height: height - 50, position: 'absolute', top: 100}}>
             <ScrollView>
             {faces === false && <Text style={{fontSize: 20, fontWeight: 'bold'}}>No Face Fount</Text>}
+              {faces === false && count === null && <Text style={{fontSize: 15, fontWeight: "bold"}}>{text}</Text>}
           { faces === true && count === 0 && <Text style={{fontSize: 15, fontWeight: "bold"}}>{text}</Text>}
           { faces === true && count === 1 && <Text style={{fontSize: 25, fontWeight: "bold"}}>{text}</Text>}
           { faces === true && count === 2 && <Text style={{fontSize: 35, fontWeight: "bold"}}>{text}</Text>}
