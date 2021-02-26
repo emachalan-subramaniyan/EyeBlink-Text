@@ -64,11 +64,28 @@ export default function App() {
     return <Text style={{fontSize: 20}}>No access to camera</Text>
   }
 
+  const headerColor = () => {
+    if(faces && count === 1){
+      return "#000"
+    }else if(faces && count === 2){
+      return "#FF0000"
+    }else if(faces && count === 3){
+      return "#00FF00"
+    }else if(faces && count === 4){
+      return "#0000FF"
+    }else if(faces && count === 5){
+      return "#800000"
+    }else{
+      return "#61dafb"
+    }
+  }
+
+
   return (
     <View style={{ flex: 1 }}>
       <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        backgroundColor={headerColor()}
         barStyle={statusBarStyle}
         showHideTransition={statusBarTransition}
         hidden={hidden} />
@@ -92,21 +109,22 @@ export default function App() {
             backgroundColor: 'white',
             flexDirection: 'column',
           }}>
-          <View style={{position: 'absolute', top: 0, height: 60, backgroundColor: "#61dafb", width: width}}>
+          <View style={{position: 'absolute', top: 0, height: 60, backgroundColor: headerColor(), width: width}}>
             <View>
               <Text style={styles.header_style}>Eye Ball</Text>
             </View>
           </View>
-          <View style={{ height: height - 50, position: 'absolute', top: 100}}>
+          <View style={{ height: height - 50, position: 'absolute', top: 60, backgroundColor: 'lightgrey', width: width}}>
             <ScrollView>
-            {faces === false && <Text style={{fontSize: 20, fontWeight: 'bold'}}>No Face Fount</Text>}
-              {faces === false && count === null && <Text style={{fontSize: 15, fontWeight: "bold"}}>{text}</Text>}
-          { faces === true && count === 0 && <Text style={{fontSize: 15, fontWeight: "bold"}}>{text}</Text>}
-          { faces === true && count === 1 && <Text style={{fontSize: 25, fontWeight: "bold"}}>{text}</Text>}
-          { faces === true && count === 2 && <Text style={{fontSize: 35, fontWeight: "bold"}}>{text}</Text>}
-          { faces === true && count === 3 && <Text style={{fontSize: 45, fontWeight: "bold"}}>{text}</Text>}
-          { faces === true && count === 4 && <Text style={{fontSize: 55, fontWeight: "bold"}}>{text}</Text>}
-          {faces === true && count === 5 && <Text style={{fontSize: 65, fontWeight: "bold"}}>{text}</Text>}
+            {faces === false && <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, marginLeft: width /3}}>No Face Fount</Text>}
+            {faces === false && count === null && <Text style={{fontSize: 15, fontWeight: "bold", marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            {faces === true && count === null && <Text style={{fontSize: 15, fontWeight: "bold", marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            { faces && count === 0 && <Text style={{fontSize: 15, fontWeight: "bold", marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            { faces && count === 1 && <Text style={{fontSize: 25, fontWeight: "bold", marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            { faces && count === 2 && <Text style={{fontSize: 35, fontWeight: "bold", color: '#808000', marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            { faces && count === 3 && <Text style={{fontSize: 45, fontWeight: "bold", color: '#413839', marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            { faces && count === 4 && <Text style={{fontSize: 55, fontWeight: "bold", color: '#737CA1', marginTop: 20, marginLeft: 10}}>{text}</Text>}
+            {faces && count === 5 && <Text style={{fontSize: 65, fontWeight: "bold", color: '#348781', marginTop: 20, marginLeft: 10}}>{text}</Text>}
           </ScrollView>
           </View>
         </View>
